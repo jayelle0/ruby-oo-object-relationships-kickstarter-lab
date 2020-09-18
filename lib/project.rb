@@ -16,4 +16,17 @@ class Project
     def add_backer(backer)
         ProjectBacker.new(self, backer)
     end
+
+    def backers
+        backers = []
+        ProjectBacker.all.map do |project_backer|
+            # binding.pry
+             if project_backer.project == self
+                backers << project_backer.backer
+             end  
+        end
+        backers
+    end
+
+
 end

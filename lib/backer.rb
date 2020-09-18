@@ -18,16 +18,18 @@ class Backer
     end 
 
     def backed_projects
-        ProjectBacker.all.select do |project_backer|
+        projects = []
+        ProjectBacker.all.map do |project_backer|
             # binding.pry
              if project_backer.backer == self
-                .map do |project_backer|
-                    project_backer.packed
-                end 
-             end 
-             
+                projects << project_backer.project
+                # binding.pry
+                # .map do |project_backer|
+                #     project_backer.packed
+                # end 
+             end  
         end
-
+        projects
     end
 
 
